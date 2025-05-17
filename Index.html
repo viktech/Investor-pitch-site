@@ -3,47 +3,28 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BeeMonitor Pro | Smart Pollinator Monitoring System</title>
+  <title>BeeMonitor Pro | Advanced Pollinator Monitoring Technology</title>
   <style>
-    /* Core Variables */
     :root {
-      --primary: #FFB81C;       /* Amber - Honey/Bee Color */
-      --secondary: #1C7C54;     /* Forest Green - Nature/Conservation */
-      --accent: #7E57C2;        /* Purple - Innovation/Research */
-      --dark: #222A30;          /* Dark Blue-Gray - Professional */
-      --light: #F7F9FB;         /* Off-White - Clean/Modern */
-      --success: #4CAF50;       /* Green - Positive Metrics */
-      --warning: #FF9800;       /* Orange - Attention */
-      --danger: #F44336;        /* Red - Alerts */
-      --gray-100: #F5F7FA;
-      --gray-200: #E4E7EB;
-      --gray-300: #CBD2D9;
-      --gray-400: #9AA5B1;
-      --gray-500: #7B8794;
-      --gray-600: #616E7C;
-      --gray-700: #52606D;
-      --gray-800: #3E4C59;
-      --gray-900: #323F4B;
-      
-      --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-      --font-heading: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-      --font-mono: 'JetBrains Mono', Menlo, Monaco, 'Courier New', monospace;
-      
-      --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-      --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-      --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-      --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-      
-      --border-radius-sm: 0.25rem;
-      --border-radius: 0.375rem;
-      --border-radius-md: 0.5rem;
-      --border-radius-lg: 0.75rem;
-      --border-radius-xl: 1rem;
-      --border-radius-2xl: 1.5rem;
-      --border-radius-full: 9999px;
+      --primary: #FCBA04;
+      --primary-dark: #D9A404;
+      --secondary: #0B9B00;
+      --secondary-dark: #096F00;
+      --dark: #1A1A1A;
+      --light: #F5F7FA;
+      --gray: #6C757D;
+      --gray-light: #E9ECEF;
+      --gray-dark: #343A40;
+      --success: #28A745;
+      --info: #17A2B8;
+      --warning: #FFC107;
+      --danger: #DC3545;
+      --font-primary: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      --font-secondary: 'Open Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
     }
     
-    /* Base Reset */
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@300;400;600;700&display=swap');
+    
     * {
       margin: 0;
       padding: 0;
@@ -51,320 +32,830 @@
     }
     
     body {
-      font-family: var(--font-primary);
-      color: var(--dark);
+      font-family: var(--font-secondary);
+      font-size: 16px;
       line-height: 1.6;
+      color: var(--dark);
       background-color: var(--light);
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
+      overflow-x: hidden;
     }
     
-    /* Typography */
     h1, h2, h3, h4, h5, h6 {
-      font-family: var(--font-heading);
-      font-weight: 700;
+      font-family: var(--font-primary);
+      font-weight: 600;
       line-height: 1.2;
-      margin-bottom: 1rem;
+      margin-bottom: 0.75rem;
     }
     
     h1 {
-      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-size: 2.5rem;
+      font-weight: 700;
     }
     
     h2 {
-      font-size: clamp(2rem, 4vw, 3rem);
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
     }
     
     h3 {
-      font-size: clamp(1.5rem, 3vw, 2rem);
-    }
-    
-    h4 {
-      font-size: clamp(1.25rem, 2vw, 1.5rem);
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
     }
     
     p {
-      margin-bottom: 1.5rem;
+      margin-bottom: 1rem;
     }
     
     a {
       color: var(--secondary);
       text-decoration: none;
-      transition: color 0.2s ease-in-out;
+      transition: all 0.3s ease;
     }
     
     a:hover {
-      color: var(--primary);
+      color: var(--secondary-dark);
     }
     
-    /* Layout Elements */
+    /* Layout */
     .container {
       width: 100%;
-      max-width: 1280px;
+      max-width: 1200px;
       margin: 0 auto;
-      padding: 0 1.5rem;
+      padding: 0 1rem;
     }
     
     .section {
       padding: 5rem 0;
     }
     
-    .section-title {
+    .section-sm {
+      padding: 3rem 0;
+    }
+    
+    .text-center {
       text-align: center;
-      margin-bottom: 4rem;
     }
     
-    .section-title h2 {
-      position: relative;
-      display: inline-block;
-      margin-bottom: 1rem;
-    }
-    
-    .section-title h2:after {
-      content: '';
-      display: block;
-      width: 80px;
-      height: 4px;
-      background: var(--primary);
-      margin: 0.5rem auto 0;
-    }
-    
-    .section-title p {
-      max-width: 800px;
-      margin: 0 auto;
-      font-size: 1.125rem;
-      color: var(--gray-600);
-    }
-    
-    .section-dark {
-      background-color: var(--dark);
-      color: var(--light);
-    }
-    
-    .section-dark .section-title h2:after {
-      background: var(--primary);
-    }
-    
-    .section-dark .section-title p {
-      color: var(--gray-300);
-    }
-    
-    .section-light {
-      background-color: var(--gray-100);
-    }
-    
-    .section-colored {
-      background-color: rgba(28, 124, 84, 0.05);
-    }
-    
-    /* Grid System */
-    .grid {
-      display: grid;
-      gap: 2rem;
-    }
-    
-    .grid-2 {
-      grid-template-columns: repeat(1, 1fr);
-    }
-    
-    .grid-3 {
-      grid-template-columns: repeat(1, 1fr);
-    }
-    
-    .grid-4 {
-      grid-template-columns: repeat(1, 1fr);
-    }
-    
-    @media (min-width: 768px) {
-      .grid-2 {
-        grid-template-columns: repeat(2, 1fr);
-      }
-      
-      .grid-3 {
-        grid-template-columns: repeat(2, 1fr);
-      }
-      
-      .grid-4 {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-    
-    @media (min-width: 1024px) {
-      .grid-3 {
-        grid-template-columns: repeat(3, 1fr);
-      }
-      
-      .grid-4 {
-        grid-template-columns: repeat(4, 1fr);
-      }
-    }
-    
-    /* Flex Utilities */
-    .flex {
-      display: flex;
-    }
-    
-    .flex-col {
-      flex-direction: column;
-    }
-    
-    .items-center {
-      align-items: center;
-    }
-    
-    .justify-between {
-      justify-content: space-between;
-    }
-    
-    .justify-center {
-      justify-content: center;
-    }
-    
-    .flex-wrap {
-      flex-wrap: wrap;
-    }
-    
-    .gap-4 {
-      gap: 1rem;
-    }
-    
-    .gap-8 {
-      gap: 2rem;
-    }
-    
-    /* Components */
-    .card {
-      background: white;
-      border-radius: var(--border-radius-lg);
-      padding: 2rem;
-      box-shadow: var(--shadow-md);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-    
-    .card:hover {
-      transform: translateY(-5px);
-      box-shadow: var(--shadow-lg);
-    }
-    
-    .card-title {
-      font-size: 1.5rem;
-      margin-bottom: 1rem;
-      color: var(--dark);
-    }
-    
+    /* Buttons */
     .btn {
       display: inline-block;
       font-weight: 600;
       text-align: center;
-      white-space: nowrap;
       vertical-align: middle;
       cursor: pointer;
-      user-select: none;
       padding: 0.75rem 1.5rem;
-      border-radius: var(--border-radius);
-      transition: all 0.2s ease-in-out;
-      border: none;
       font-size: 1rem;
+      line-height: 1.5;
+      border-radius: 0.25rem;
+      transition: all 0.15s ease-in-out;
+      text-decoration: none;
     }
     
     .btn-primary {
       background-color: var(--primary);
       color: var(--dark);
+      border: 2px solid var(--primary);
     }
     
     .btn-primary:hover {
-      background-color: #E5A618;
+      background-color: var(--primary-dark);
+      border-color: var(--primary-dark);
       color: var(--dark);
     }
     
     .btn-secondary {
       background-color: var(--secondary);
       color: white;
+      border: 2px solid var(--secondary);
     }
     
     .btn-secondary:hover {
-      background-color: #166446;
+      background-color: var(--secondary-dark);
+      border-color: var(--secondary-dark);
       color: white;
     }
     
     .btn-outline {
       background-color: transparent;
-      border: 2px solid var(--secondary);
-      color: var(--secondary);
+      color: var(--dark);
+      border: 2px solid currentColor;
     }
     
     .btn-outline:hover {
-      background-color: var(--secondary);
+      background-color: var(--dark);
       color: white;
     }
     
     .btn-lg {
       padding: 1rem 2rem;
       font-size: 1.125rem;
+      border-radius: 0.3rem;
     }
     
-    .btn-rounded {
-      border-radius: var(--border-radius-full);
+    .btn-sm {
+      padding: 0.5rem 1rem;
+      font-size: 0.875rem;
+      border-radius: 0.2rem;
     }
     
-    /* Custom Styling for Testing */
-    .test-element {
-      background-color: var(--gray-200);
-      padding: 1rem;
-      border-radius: var(--border-radius);
+    /* Header/Navigation */
+    .header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background-color: white;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      z-index: 1000;
+      transition: all 0.3s ease;
+    }
+    
+    .header.scrolled {
+      background-color: white;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+    
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 0;
+    }
+    
+    .navbar-brand {
+      display: flex;
+      align-items: center;
+      font-family: var(--font-primary);
+      font-weight: 700;
+      font-size: 1.5rem;
+      color: var(--dark);
+    }
+    
+    .logo {
+      height: 40px;
+      margin-right: 0.5rem;
+    }
+    
+    .navbar-nav {
+      display: flex;
+      list-style: none;
+    }
+    
+    .nav-item {
+      margin-left: 1.5rem;
+    }
+    
+    .nav-link {
+      color: var(--dark);
+      font-weight: 500;
+      position: relative;
+    }
+    
+    .nav-link:after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background-color: var(--primary);
+      transition: width 0.3s ease;
+    }
+    
+    .nav-link:hover:after,
+    .nav-link.active:after {
+      width: 100%;
+    }
+    
+    .navbar-toggle {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+    
+    /* Hero Section */
+    .hero {
+      position: relative;
+      height: 100vh;
+      min-height: 600px;
+      display: flex;
+      align-items: center;
+      background-color: var(--light);
+      overflow: hidden;
+      margin-top: 70px; /* Header height */
+    }
+    
+    .hero-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPgogIDxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9IiNmNWY3ZmEiLz4KICA8cGF0aCBkPSJNMCAwIEwxMDAgMTAwIE0xMDAgMCBMMCAxMDAiIHN0cm9rZT0iI2VlZWVlZSIgc3Ryb2tlLXdpZHRoPSIxIi8+Cjwvc3ZnPg==');
+      opacity: 0.5;
+      z-index: -1;
+    }
+    
+    .hero-content {
+      max-width: 700px;
+      padding: 2rem 0;
+    }
+    
+    .hero-title {
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      line-height: 1.2;
+    }
+    
+    .hero-subtitle {
+      font-size: 1.5rem;
+      margin-bottom: 2rem;
+      color: var(--gray);
+    }
+    
+    .hero-btns {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    
+    /* Feature Cards */
+    .features {
+      background-color: white;
+    }
+    
+    .feature-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+    
+    .feature-card {
+      background-color: white;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .feature-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    }
+    
+    .feature-icon {
+      width: 60px;
+      height: 60px;
+      background-color: rgba(252, 186, 4, 0.1);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.5rem;
+      font-size: 1.5rem;
+    }
+    
+    .feature-body {
+      padding: 2rem;
+    }
+    
+    .feature-title {
       margin-bottom: 1rem;
+    }
+    
+    /* Section Styling */
+    .section-header {
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto 4rem;
+    }
+    
+    .section-title {
+      position: relative;
+      display: inline-block;
+      margin-bottom: 1rem;
+    }
+    
+    .section-title:after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 3px;
+      background-color: var(--primary);
+    }
+    
+    .section-subtitle {
+      color: var(--gray);
+      font-size: 1.125rem;
+    }
+    
+    /* Technology Section */
+    .tech-img {
+      width: 100%;
+      border-radius: 8px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+    
+    .tech-content {
+      padding: 2rem;
+    }
+    
+    .tech-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+    
+    /* Pricing Cards */
+    .pricing-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 4rem;
+    }
+    
+    .pricing-card {
+      background-color: white;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .pricing-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    }
+    
+    .pricing-header {
+      padding: 2rem;
+      border-bottom: 1px solid var(--gray-light);
       text-align: center;
     }
+    
+    .pricing-title {
+      font-size: 1.25rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .pricing-price {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+    
+    .pricing-period {
+      font-size: 0.875rem;
+      color: var(--gray);
+    }
+    
+    .pricing-features {
+      padding: 2rem;
+      list-style: none;
+    }
+    
+    .pricing-feature {
+      position: relative;
+      padding-left: 1.5rem;
+      margin-bottom: 1rem;
+    }
+    
+    .pricing-feature:before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: var(--success);
+      font-weight: 700;
+    }
+    
+    .pricing-footer {
+      padding: 0 2rem 2rem;
+      text-align: center;
+    }
+    
+    /* Testimonials */
+    .testimonials {
+      background-color: var(--light);
+    }
+    
+    .testimonial-card {
+      background-color: white;
+      border-radius: 8px;
+      padding: 2rem;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
+      margin-bottom: 2rem;
+    }
+    
+    .testimonial-content {
+      position: relative;
+      font-style: italic;
+      margin-bottom: 1.5rem;
+    }
+    
+    .testimonial-content:before {
+      content: '"';
+      position: absolute;
+      top: -20px;
+      left: -10px;
+      font-size: 4rem;
+      color: var(--primary);
+      opacity: 0.2;
+      font-family: Georgia, serif;
+    }
+    
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+    }
+    
+    .testimonial-avatar {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      margin-right: 1rem;
+      object-fit: cover;
+    }
+    
+    .testimonial-name {
+      font-weight: 600;
+      margin-bottom: 0.25rem;
+    }
+    
+    .testimonial-position {
+      font-size: 0.875rem;
+      color: var(--gray);
+    }
+    
+    /* CTA Section */
+    .cta {
+      background-color: var(--secondary);
+      color: white;
+      text-align: center;
+      padding: 5rem 0;
+    }
+    
+    .cta-title {
+      font-size: 2.5rem;
+      margin-bottom: 1.5rem;
+    }
+    
+    .cta-subtitle {
+      font-size: 1.25rem;
+      margin-bottom: 2rem;
+      opacity: 0.9;
+    }
+    
+    .cta-btn {
+      background-color: white;
+      color: var(--secondary);
+      border: 2px solid white;
+    }
+    
+    .cta-btn:hover {
+      background-color: transparent;
+      color: white;
+    }
+    
+    /* Footer */
+    .footer {
+      background-color: var(--dark);
+      color: white;
+      padding: 5rem 0 2rem;
+    }
+    
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 3rem;
+      margin-bottom: 3rem;
+    }
+    
+    .footer-logo {
+      font-family: var(--font-primary);
+      font-weight: 700;
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+    }
+    
+    .footer-logo img {
+      height: 35px;
+      margin-right: 0.5rem;
+    }
+    
+    .footer-about {
+      margin-bottom: 1.5rem;
+      opacity: 0.8;
+    }
+    
+    .footer-social {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    
+    .social-icon {
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+      transition: background-color 0.3s ease;
+    }
+    
+    .social-icon:hover {
+      background-color: var(--primary);
+    }
+    
+    .footer-title {
+      font-size: 1.25rem;
+      margin-bottom: 1.5rem;
+      position: relative;
+    }
+    
+    .footer-title:after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      width: 40px;
+      height: 2px;
+      background-color: var(--primary);
+    }
+    
+    .footer-links {
+      list-style: none;
+    }
+    
+    .footer-link {
+      margin-bottom: 0.75rem;
+    }
+    
+    .footer-link a {
+      color: rgba(255, 255, 255, 0.8);
+      transition: color 0.3s ease;
+    }
+    
+    .footer-link a:hover {
+      color: var(--primary);
+    }
+    
+    .footer-contact {
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: flex-start;
+    }
+    
+    .footer-contact i {
+      margin-right: 1rem;
+      color: var(--primary);
+    }
+    
+    .footer-bottom {
+      text-align: center;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      font-size: 0.875rem;
+      opacity: 0.7;
+    }
+    
+    /* Responsive */
+    @media (max-width: 992px) {
+      .tech-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+      
+      .tech-img {
+        order: 2;
+      }
+      
+      .tech-content {
+        order: 1;
+        padding: 0;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .navbar-nav {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background-color: white;
+        flex-direction: column;
+        padding: 1rem 0;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+      }
+      
+      .navbar-nav.show {
+        display: flex;
+      }
+      
+      .nav-item {
+        margin: 0;
+        padding: 0.75rem 2rem;
+      }
+      
+      .navbar-toggle {
+        display: block;
+      }
+      
+      .hero-title {
+        font-size: 2.5rem;
+      }
+      
+      .hero-subtitle {
+        font-size: 1.25rem;
+      }
+      
+      .section {
+        padding: 4rem 0;
+      }
+    }
+    
+    @media (max-width: 576px) {
+      .hero-title {
+        font-size: 2rem;
+      }
+      
+      .hero-subtitle {
+        font-size: 1.125rem;
+      }
+      
+      .hero-btns {
+        flex-direction: column;
+        width: 100%;
+      }
+      
+      .hero-btns .btn {
+        width: 100%;
+        margin-bottom: 1rem;
+      }
+      
+      .section {
+        padding: 3rem 0;
+      }
+      
+      .section-title {
+        font-size: 1.75rem;
+      }
+    }
   </style>
-  
-  <!-- Import fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono&family=Manrope:wght@500;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
-  <!-- Test basic styling -->
-  <div class="container section">
-    <div class="section-title">
-      <h2>Core Styling Test</h2>
-      <p>Testing the base styling components before building out the full site.</p>
+  <!-- Header -->
+  <header class="header">
+    <div class="container">
+      <nav class="navbar">
+        <a href="#" class="navbar-brand">
+          <div style="width: 40px; height: 40px; background-color: var(--primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 10px; color: var(--dark); font-weight: bold;">B</div>
+          BeeMonitor Pro
+        </a>
+        <button class="navbar-toggle" id="navbarToggle">
+          ☰
+        </button>
+        <ul class="navbar-nav" id="navbarNav">
+          <li class="nav-item">
+            <a href="#features" class="nav-link">Features</a>
+          </li>
+          <li class="nav-item">
+            <a href="#technology" class="nav-link">Technology</a>
+          </li>
+          <li class="nav-item">
+            <a href="#pricing" class="nav-link">Pricing</a>
+          </li>
+          <li class="nav-item">
+            <a href="#research" class="nav-link">Research</a>
+          </li>
+          <li class="nav-item">
+            <a href="#investors" class="nav-link">Investors</a>
+          </li>
+          <li class="nav-item">
+            <a href="#contact" class="nav-link">Contact</a>
+          </li>
+        </ul>
+      </nav>
     </div>
-    
-    <div class="grid grid-2 gap-8">
-      <div>
-        <h3>Typography</h3>
-        <h1>Heading 1</h1>
-        <h2>Heading 2</h2>
-        <h3>Heading 3</h3>
-        <h4>Heading 4</h4>
-        <p>This is a paragraph with <a href="#">a link</a> inside it to test the styling.</p>
-      </div>
-      
-      <div>
-        <h3>Components</h3>
-        <div class="flex flex-col gap-4">
-          <button class="btn btn-primary">Primary Button</button>
-          <button class="btn btn-secondary">Secondary Button</button>
-          <button class="btn btn-outline">Outline Button</button>
-          <button class="btn btn-primary btn-rounded">Rounded Button</button>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="container">
+      <div class="hero-content">
+        <h1 class="hero-title">Revolutionizing Bee Population Monitoring</h1>
+        <p class="hero-subtitle">Advanced IoT technology for research, conservation, education, and agriculture with unprecedented insights into bee behavior and ecology.</p>
+        <div class="hero-btns">
+          <a href="#pricing" class="btn btn-primary btn-lg">View Products</a>
+          <a href="#investors" class="btn btn-outline btn-lg">Investor Information</a>
         </div>
-        
-        <div class="card" style="margin-top: 2rem;">
-          <h3 class="card-title">Card Example</h3>
-          <p>This is a card component that can be used throughout the site.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section id="features" class="section features">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Key Features</h2>
+        <p class="section-subtitle">BeeMonitor Pro delivers precise, non-invasive monitoring technology that transforms our understanding of pollinator populations.</p>
+      </div>
+      <div class="feature-cards">
+        <div class="feature-card">
+          <div class="feature-body">
+            <div class="feature-icon">🐝</div>
+            <h3 class="feature-title">Species-Specific Design</h3>
+            <p>Customized monitoring solutions optimized for different bee species, with specialized entrance sizes, sensor configurations, and analysis algorithms.</p>
+          </div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-body">
+            <div class="feature-icon">📊</div>
+            <h3 class="feature-title">Real-Time Analytics</h3>
+            <p>Cloud-based dashboard with advanced visualization of activity patterns, environmental correlations, and population trends.</p>
+          </div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-body">
+            <div class="feature-icon">🔋</div>
+            <h3 class="feature-title">Power Efficient</h3>
+            <p>Solar-powered with intelligent power management for year-round operation, even in low-light winter conditions.</p>
+          </div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-body">
+            <div class="feature-icon">🌐</div>
+            <h3 class="feature-title">Mesh Network</h3>
+            <p>Self-organizing monitoring network enables broad habitat coverage with synchronized data collection.</p>
+          </div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-body">
+            <div class="feature-icon">🔍</div>
+            <h3 class="feature-title">Non-Invasive Monitoring</h3>
+            <p>Advanced sensors capture data without disrupting natural behavior, providing more accurate ecological insights.</p>
+          </div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-body">
+            <div class="feature-icon">🌡️</div>
+            <h3 class="feature-title">Environmental Context</h3>
+            <p>Integrates weather, plant phenology, and soil conditions to provide holistic understanding of pollinator ecology.</p>
+          </div>
         </div>
       </div>
     </div>
-    
-    <div style="margin-top: 2rem;">
-      <h3>Grid System</h3>
-      <div class="grid grid-4 gap-4">
-        <div class="test-element">Column 1</div>
-        <div class="test-element">Column 2</div>
-        <div class="test-element">Column 3</div>
-        <div class="test-element">Column 4</div>
+  </section>
+
+  <!-- Technology Section -->
+  <section id="technology" class="section">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Technology Platform</h2>
+        <p class="section-subtitle">BeeMonitor Pro combines cutting-edge hardware and software to create a comprehensive monitoring ecosystem.</p>
+      </div>
+      <div class="tech-grid">
+        <div class="tech-img-container">
+          <img src="/api/placeholder/600/400" alt="BeeMonitor Pro Technology" class="tech-img">
+        </div>
+        <div class="tech-content">
+          <h3>Integrated Monitoring System</h3>
+          <p>Our proprietary hardware platform combines multiple sensor types with edge computing capabilities to deliver comprehensive monitoring with minimal invasiveness.</p>
+          <p>Each habitat monitoring unit is designed for the specific needs of target bee species, with optimized entrance configurations, specialized sensors, and adaptive power management.</p>
+          <p>The cloud platform processes data from across monitoring networks to identify patterns and correlations invisible to traditional research methods.</p>
+        </div>
       </div>
     </div>
-  </div>
+  </section>
+
+  <!-- Script for basic interactivity -->
+  <script>
+    // Mobile navigation toggle
+    document.getElementById('navbarToggle').addEventListener('click', function() {
+      document.getElementById('navbarNav').classList.toggle('show');
+    });
+    
+    // Header scroll effect
+    window.addEventListener('scroll', function() {
+      const header = document.querySelector('.header');
+      if (window.scrollY > 50) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    });
+  </script>
 </body>
 </html>
