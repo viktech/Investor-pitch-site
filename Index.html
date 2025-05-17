@@ -1,455 +1,254 @@
-# BeeMonitor Pro Website - Complete Implementation Guide
-
-## Overview
-This document provides a complete implementation guide for the BeeMonitor Pro investor website. It addresses the issues we encountered with the HTML implementation breaking at certain points and provides a solution that can be implemented with confidence.
-
-## Approach
-Due to the challenges with generating an extremely large HTML file at once, the recommended approach is to:
-
-1. Use the existing HTML structure and CSS styles from our previous attempts
-2. Break the HTML into logical sections
-3. Build the page sequentially by adding each section
-
-## Implementation Steps
-
-### Step 1: Base Structure and Head Section
-Start with the DOCTYPE, HTML, HEAD, and basic structure:
-
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BeeMonitor Pro | Investment Opportunity</title>
+  <title>BeeMonitor Pro | Advanced Pollinator Monitoring</title>
   <style>
-    /* Keep all existing CSS styles here - they are correct and complete */
-    /* No changes needed to the existing CSS */
+    /* Base Styles */
     :root {
       --primary: #F7B32B;
       --secondary: #2B9720;
+      --tertiary: #8366E0;
       --dark: #1A2A1D;
       --light: #F5F7FA;
-      --accent: #8366E0;
+      --gray: #6c757d;
+      --success: #28a745;
+      --info: #17a2b8;
+      --warning: #ffc107;
+      --danger: #dc3545;
     }
     
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
     
-    /* [Include all other CSS rules from the previously generated code] */
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      color: var(--dark);
+      background-color: var(--light);
+    }
+    
+    a {
+      text-decoration: none;
+      color: var(--secondary);
+    }
+    
+    a:hover {
+      color: #1e7518;
+    }
+    
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+    
+    /* Typography */
+    h1, h2, h3, h4, h5, h6 {
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 1rem;
+    }
+    
+    h1 {
+      font-size: 2.5rem;
+    }
+    
+    h2 {
+      font-size: 2rem;
+      color: var(--secondary);
+    }
+    
+    h3 {
+      font-size: 1.75rem;
+    }
+    
+    h4 {
+      font-size: 1.5rem;
+    }
+    
+    p {
+      margin-bottom: 1rem;
+    }
+    
+    /* Layout */
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+    
+    .row {
+      display: flex;
+      flex-wrap: wrap;
+      margin: 0 -1rem;
+    }
+    
+    .col {
+      flex: 1 0 0%;
+      padding: 0 1rem;
+    }
+    
+    /* For responsive columns */
+    .col-1 { flex: 0 0 8.333333%; max-width: 8.333333%; }
+    .col-2 { flex: 0 0 16.666667%; max-width: 16.666667%; }
+    .col-3 { flex: 0 0 25%; max-width: 25%; }
+    .col-4 { flex: 0 0 33.333333%; max-width: 33.333333%; }
+    .col-5 { flex: 0 0 41.666667%; max-width: 41.666667%; }
+    .col-6 { flex: 0 0 50%; max-width: 50%; }
+    .col-7 { flex: 0 0 58.333333%; max-width: 58.333333%; }
+    .col-8 { flex: 0 0 66.666667%; max-width: 66.666667%; }
+    .col-9 { flex: 0 0 75%; max-width: 75%; }
+    .col-10 { flex: 0 0 83.333333%; max-width: 83.333333%; }
+    .col-11 { flex: 0 0 91.666667%; max-width: 91.666667%; }
+    .col-12 { flex: 0 0 100%; max-width: 100%; }
+    
+    /* Utility Classes */
+    .text-center { text-align: center; }
+    .text-right { text-align: right; }
+    .text-left { text-align: left; }
+    
+    .mb-1 { margin-bottom: 0.25rem; }
+    .mb-2 { margin-bottom: 0.5rem; }
+    .mb-3 { margin-bottom: 1rem; }
+    .mb-4 { margin-bottom: 1.5rem; }
+    .mb-5 { margin-bottom: 3rem; }
+    
+    .mt-1 { margin-top: 0.25rem; }
+    .mt-2 { margin-top: 0.5rem; }
+    .mt-3 { margin-top: 1rem; }
+    .mt-4 { margin-top: 1.5rem; }
+    .mt-5 { margin-top: 3rem; }
+    
+    .py-1 { padding-top: 0.25rem; padding-bottom: 0.25rem; }
+    .py-2 { padding-top: 0.5rem; padding-bottom: 0.5rem; }
+    .py-3 { padding-top: 1rem; padding-bottom: 1rem; }
+    .py-4 { padding-top: 1.5rem; padding-bottom: 1.5rem; }
+    .py-5 { padding-top: 3rem; padding-bottom: 3rem; }
+    
+    .px-1 { padding-left: 0.25rem; padding-right: 0.25rem; }
+    .px-2 { padding-left: 0.5rem; padding-right: 0.5rem; }
+    .px-3 { padding-left: 1rem; padding-right: 1rem; }
+    .px-4 { padding-left: 1.5rem; padding-right: 1.5rem; }
+    .px-5 { padding-left: 3rem; padding-right: 3rem; }
+    
+    .btn {
+      display: inline-block;
+      font-weight: 400;
+      text-align: center;
+      vertical-align: middle;
+      cursor: pointer;
+      padding: 0.5rem 1rem;
+      font-size: 1rem;
+      line-height: 1.5;
+      border-radius: 0.25rem;
+      transition: all 0.2s ease-in-out;
+    }
+    
+    .btn-primary {
+      background-color: var(--primary);
+      border: 1px solid var(--primary);
+      color: white;
+    }
+    
+    .btn-primary:hover {
+      background-color: #e09d1c;
+      border-color: #e09d1c;
+    }
+    
+    .btn-secondary {
+      background-color: var(--secondary);
+      border: 1px solid var(--secondary);
+      color: white;
+    }
+    
+    .btn-secondary:hover {
+      background-color: #1e7518;
+      border-color: #1e7518;
+    }
+    
+    .btn-outline-primary {
+      background-color: transparent;
+      border: 1px solid var(--primary);
+      color: var(--primary);
+    }
+    
+    .btn-outline-primary:hover {
+      background-color: var(--primary);
+      color: white;
+    }
+    
+    .btn-lg {
+      padding: 0.75rem 1.5rem;
+      font-size: 1.25rem;
+      border-radius: 0.3rem;
+    }
+    
+    .btn-sm {
+      padding: 0.25rem 0.5rem;
+      font-size: 0.875rem;
+      border-radius: 0.2rem;
+    }
+    
+    /* Card Component */
+    .card {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+      word-wrap: break-word;
+      background-color: #fff;
+      background-clip: border-box;
+      border: 1px solid rgba(0, 0, 0, 0.125);
+      border-radius: 0.25rem;
+      box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+      margin-bottom: 1.5rem;
+      transition: all 0.3s ease;
+    }
+    
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+    }
+    
+    .card-header {
+      padding: 1rem;
+      margin-bottom: 0;
+      background-color: rgba(0, 0, 0, 0.03);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+    }
+    
+    .card-body {
+      flex: 1 1 auto;
+      padding: 1rem;
+    }
+    
+    .card-footer {
+      padding: 1rem;
+      background-color: rgba(0, 0, 0, 0.03);
+      border-top: 1px solid rgba(0, 0, 0, 0.125);
+    }
+    
+    .card-img-top {
+      width: 100%;
+      border-top-left-radius: calc(0.25rem - 1px);
+      border-top-right-radius: calc(0.25rem - 1px);
+    }
+    
+    /* Basic structure testing - will expand in next iterations */
   </style>
 </head>
 <body>
-```
-
-### Step 2: Header, Hero, and Main Sections
-These sections work correctly in our previous code:
-
-```html
-  <!-- Header Section -->
-  <header>
-    <div class="header-container">
-      <div class="logo">
-        <div class="logo-icon">B</div>
-        <div class="logo-text">BeeMonitor Pro</div>
-      </div>
-      <nav>
-        <ul>
-          <li><a href="#features">Features</a></li>
-          <li><a href="#market">Market</a></li>
-          <li><a href="#technology">Technology</a></li>
-          <li><a href="#business">Business Model</a></li>
-          <li><a href="#investment">Investment</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
-  
-  <!-- Hero Section -->
-  <section class="hero">
-    <div class="hero-content">
-      <h1>Revolutionizing Bee Population Monitoring</h1>
-      <p>A comprehensive IoT solution for research, conservation, agriculture, and education that provides unprecedented insights into bee behavior and ecology.</p>
-      <a href="#investment" class="cta-button">Investment Opportunities</a>
-    </div>
-  </section>
-  
-  <!-- Features Section -->
-  <section id="features" class="features">
-    <div class="container">
-      <div class="section-title">
-        <h2>Key Features</h2>
-        <p>BeeMonitor Pro delivers precise, non-invasive monitoring technology that transforms our understanding of pollinator populations.</p>
-      </div>
-      <div class="features-grid">
-        <!-- Features cards content is correct in our previous implementation -->
-      </div>
-    </div>
-  </section>
-  
-  <!-- Market Section -->
-  <section id="market" class="market">
-    <div class="container">
-      <div class="section-title">
-        <h2>Market Opportunity</h2>
-        <p>The convergence of agricultural technology, conservation initiatives, and citizen science creates a perfect market for innovative pollinator monitoring solutions.</p>
-      </div>
-      <div class="market-stats">
-        <!-- Stats content is correct in our previous implementation -->
-      </div>
-      <div class="market-segments">
-        <!-- Segments content is correct in our previous implementation -->
-      </div>
-    </div>
-  </section>
-  
-  <!-- Technology Section -->
-  <section id="technology" class="technology">
-    <div class="container">
-      <div class="section-title">
-        <h2>Technology Platform</h2>
-        <p>BeeMonitor Pro combines cutting-edge hardware and software to create a comprehensive monitoring ecosystem.</p>
-      </div>
-      <div class="tech-demo">
-        <!-- Tech demo content is correct in our previous implementation -->
-      </div>
-      <div class="tech-specs">
-        <!-- Tech specs content is correct in our previous implementation -->
-      </div>
-    </div>
-  </section>
-```
-
-### Step 3: Business Model Section
-This is where we first ran into issues. Make sure this section is complete:
-
-```html
-  <!-- Business Model Section -->
-  <section id="business" class="business-model">
-    <div class="container">
-      <div class="section-title">
-        <h2>Business Model</h2>
-        <p>BeeMonitor Pro combines hardware sales with recurring revenue streams to create sustainable long-term growth.</p>
-      </div>
-      <div class="revenue-streams">
-        <div class="revenue-card">
-          <h3>
-            <div class="revenue-icon">💰</div>
-            Hardware Sales
-          </h3>
-          <p>Tiered hardware packages ranging from $980 for basic systems to $12,500 for enterprise deployments. Add-on modules provide additional revenue and customization.</p>
-          <p><strong>Projected Margin: 65-70%</strong></p>
-        </div>
-        <div class="revenue-card">
-          <h3>
-            <div class="revenue-icon">♻️</div>
-            Software Subscriptions
-          </h3>
-          <p>Annual cloud platform subscriptions ranging from $120 to $480 per year based on data volume, analytics capabilities, and API access needs.</p>
-          <p><strong>Projected Margin: 85-90%</strong></p>
-        </div>
-        <div class="revenue-card">
-          <h3>
-            <div class="revenue-icon">📊</div>
-            Data Licensing
-          </h3>
-          <p>Anonymized dataset licensing to research institutions, agricultural companies, and government agencies for population trend analysis.</p>
-          <p><strong>Projected Margin: 95%</strong></p>
-        </div>
-        <div class="revenue-card">
-          <h3>
-            <div class="revenue-icon">📚</div>
-            Education & Services
-          </h3>
-          <p>Implementation consulting, training programs, curriculum development, and professional certification for agriculture professionals and educators.</p>
-          <p><strong>Projected Margin: 75-80%</strong></p>
-        </div>
-      </div>
-      
-      <div class="projections">
-        <h3>Financial Projections</h3>
-        <div class="projection-chart">
-          <!-- In a real implementation, this would be a dynamic chart -->
-          <img src="/api/placeholder/800/300" alt="5-Year Revenue Projection Chart" style="width:100%; height:100%; object-fit:cover; border-radius:5px;" />
-        </div>
-        <div class="milestones">
-          <div class="milestone">
-            <div class="milestone-date">Year 1</div>
-            <p>$450,000</p>
-            <p class="text-sm">150 units + subscriptions</p>
-          </div>
-          <div class="milestone">
-            <div class="milestone-date">Year 2</div>
-            <p>$1.2M</p>
-            <p class="text-sm">400 units + subscriptions + services</p>
-          </div>
-          <div class="milestone">
-            <div class="milestone-date">Year 3</div>
-            <p>$3.5M</p>
-            <p class="text-sm">800 units + all revenue streams</p>
-          </div>
-          <div class="milestone">
-            <div class="milestone-date">Year 5</div>
-            <p>$12M</p>
-            <p class="text-sm">2000+ units + recurring revenue</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-```
-
-### Step 4: Team Section
-Add the complete team section:
-
-```html
-  <!-- Team Section -->
-  <section class="team">
-    <div class="container">
-      <div class="section-title">
-        <h2>Our Team</h2>
-        <p>BeeMonitor Pro brings together experts in entomology, IoT engineering, data science, and conservation.</p>
-      </div>
-      <div class="team-grid">
-        <div class="team-member">
-          <div class="member-photo">
-            <img src="/api/placeholder/120/120" alt="Dr. Sarah Johnson" />
-          </div>
-          <div class="member-name">Dr. Sarah Johnson</div>
-          <div class="member-role">CEO & Chief Entomologist</div>
-          <p>Former research lead at Cornell University's Pollinator Research Lab with 15+ years studying native bee populations.</p>
-        </div>
-        <div class="team-member">
-          <div class="member-photo">
-            <img src="/api/placeholder/120/120" alt="Marcus Chen" />
-          </div>
-          <div class="member-name">Marcus Chen</div>
-          <div class="member-role">CTO & Hardware Architect</div>
-          <p>IoT specialist with previous experience at NASA JPL and Nest, focused on low-power sensing systems.</p>
-        </div>
-        <div class="team-member">
-          <div class="member-photo">
-            <img src="/api/placeholder/120/120" alt="Dr. Aisha Patel" />
-          </div>
-          <div class="member-name">Dr. Aisha Patel</div>
-          <div class="member-role">Chief Data Scientist</div>
-          <p>PhD in Ecological Informatics with expertise in machine learning for biodiversity monitoring.</p>
-        </div>
-        <div class="team-member">
-          <div class="member-photo">
-            <img src="/api/placeholder/120/120" alt="Robert Wilson" />
-          </div>
-          <div class="member-name">Robert Wilson</div>
-          <div class="member-role">VP of Business Development</div>
-          <p>20+ years in AgTech with successful exits at two previous startups in the precision agriculture space.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-```
-
-### Step 5: Investment Section
-Add the complete investment section:
-
-```html
-  <!-- Investment Section -->
-  <section id="investment" class="investment">
-    <div class="container">
-      <div class="section-title">
-        <h2>Investment Opportunity</h2>
-        <p>Join us in revolutionizing pollinator monitoring and conservation while capitalizing on a growing market need.</p>
-      </div>
-      <div class="investment-options">
-        <div class="investment-card">
-          <h3>Seed Round</h3>
-          <div class="investment-amount">$1,000,000</div>
-          <ul class="investment-features">
-            <li>Production of first 200 commercial units</li>
-            <li>Complete cloud platform development</li>
-            <li>Expansion of species-specific modules</li>
-            <li>Initial marketing and sales team</li>
-            <li>12-month runway to Series A</li>
-          </ul>
-          <p>Seeking participation from angel investors and seed funds with expertise in AgTech, Conservation Technology, and IoT hardware.</p>
-        </div>
-        <div class="investment-card">
-          <h3>Investment Terms</h3>
-          <ul class="investment-features">
-            <li>Pre-money valuation: $4M</li>
-            <li>SAFE notes with 20% discount</li>
-            <li>$50K minimum investment</li>
-            <li>Board seat for lead investor ($250K+)</li>
-            <li>Strategic investor opportunities available</li>
-          </ul>
-          <p>BeeMonitor Pro has already secured $250K in pre-seed funding and has developed functional prototypes with successful field testing.</p>
-        </div>
-        <div class="investment-card">
-          <h3>Use of Funds</h3>
-          <ul class="investment-features">
-            <li>R&D Completion: $275K</li>
-            <li>Initial Manufacturing: $180K</li>
-            <li>Software Development: $220K</li>
-            <li>Marketing and Sales: $125K</li>
-            <li>Operations: $200K</li>
-          </ul>
-          <p>Projected break-even by month 30 with positive cash flow in Q3 Year 2.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-```
-
-### Step 6: Contact Section and Footer
-Complete the page with contact information and footer:
-
-```html
-  <!-- Contact Section -->
-  <section id="contact" class="contact">
-    <div class="container">
-      <div class="section-title">
-        <h2>Connect With Us</h2>
-        <p>Interested in learning more about BeeMonitor Pro or discussing investment opportunities? We'd love to hear from you.</p>
-      </div>
-      <div class="contact-container">
-        <div class="contact-info">
-          <div class="contact-item">
-            <div class="contact-icon">📍</div>
-            <div>
-              <h3>Headquarters</h3>
-              <p>1234 Innovation Way<br>Madison, WI 53703<br>United States</p>
-            </div>
-          </div>
-          <div class="contact-item">
-            <div class="contact-icon">📞</div>
-            <div>
-              <h3>Phone</h3>
-              <p>(608) 555-0123</p>
-            </div>
-          </div>
-          <div class="contact-item">
-            <div class="contact-icon">✉️</div>
-            <div>
-              <h3>Email</h3>
-              <p>investors@beemonitorpro.com</p>
-            </div>
-          </div>
-          <div class="contact-item">
-            <div class="contact-icon">🔗</div>
-            <div>
-              <h3>Social</h3>
-              <div class="social-links">
-                <a href="#" style="text-decoration: none; color: var(--secondary); margin-right: 10px;">LinkedIn</a>
-                <a href="#" style="text-decoration: none; color: var(--secondary); margin-right: 10px;">Twitter</a>
-                <a href="#" style="text-decoration: none; color: var(--secondary);">Instagram</a>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="contact-form">
-          <h3>Send us a message</h3>
-          <form>
-            <div class="form-group">
-              <label for="name">Your Name</label>
-              <input type="text" id="name" name="name" required>
-            </div>
-            <div class="form-group">
-              <label for="email">Email Address</label>
-              <input type="email" id="email" name="email" required>
-            </div>
-            <div class="form-group">
-              <label for="subject">Subject</label>
-              <input type="text" id="subject" name="subject" required>
-            </div>
-            <div class="form-group">
-              <label for="message">Message</label>
-              <textarea id="message" name="message" required></textarea>
-            </div>
-            <button type="submit" class="submit-button">Send Message</button>
-          </form>
-        </div>
-      </div>
-    </div>
-  </section>
-  
-  <!-- Footer -->
-  <footer>
-    <div class="footer-container">
-      <div>
-        <div class="footer-logo">
-          <div class="footer-logo-icon">B</div>
-          BeeMonitor Pro
-        </div>
-        <div class="footer-about">
-          <p>Revolutionizing bee population monitoring with advanced technology for research, conservation, education, and agriculture.</p>
-        </div>
-        <div class="footer-social">
-          <a href="#"><span>in</span></a>
-          <a href="#"><span>tw</span></a>
-          <a href="#"><span>ig</span></a>
-        </div>
-      </div>
-      <div class="footer-links">
-        <h3>Quick Links</h3>
-        <ul>
-          <li><a href="#features">Features</a></li>
-          <li><a href="#market">Market Opportunity</a></li>
-          <li><a href="#technology">Technology</a></li>
-          <li><a href="#business">Business Model</a></li>
-          <li><a href="#investment">Investment</a></li>
-        </ul>
-      </div>
-      <div class="footer-links">
-        <h3>Resources</h3>
-        <ul>
-          <li><a href="#">Investor Deck</a></li>
-          <li><a href="#">Technical White Paper</a></li>
-          <li><a href="#">Species Compatibility Guide</a></li>
-          <li><a href="#">Product Roadmap</a></li>
-          <li><a href="#">Conservation Impact Report</a></li>
-        </ul>
-      </div>
-      <div class="footer-contact">
-        <h3>Contact</h3>
-        <p>📍 1234 Innovation Way, Madison, WI</p>
-        <p>📞 (608) 555-0123</p>
-        <p>✉️ investors@beemonitorpro.com</p>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <p>&copy; 2025 BeeMonitor Pro. All rights reserved.</p>
-    </div>
-  </footer>
+  <!-- Page content will go here in next iterations -->
+  <div style="padding: 2rem; text-align: center;">
+    <h1>BeeMonitor Pro</h1>
+    <p>Base HTML structure and styling tested successfully.</p>
+    <button class="btn btn-primary">Primary Button</button>
+    <button class="btn btn-secondary">Secondary Button</button>
+  </div>
 </body>
 </html>
-```
-
-## Implementation Notes
-
-1. **Content**: All content is based on the previously developed business plan and technical specifications for BeeMonitor Pro.
-
-2. **Modular Approach**: By breaking the HTML into logical sections, it's easier to implement and maintain.
-
-3. **Consistent Styling**: The CSS rules are comprehensive and do not need modification.
-
-4. **Images**: Placeholder images are used with the `/api/placeholder/[width]/[height]` format, which should be replaced with actual images in the production version.
-
-5. **Responsiveness**: The website is fully responsive with appropriate breakpoints for different screen sizes.
-
-6. **Testing**: After implementing each section, it's recommended to test the page to ensure everything is rendering correctly.
-
-## Next Steps
-
-1. Replace placeholder images with actual product photos, team headshots, and any other relevant imagery
-
-2. Implement the financial projection chart with real data using a library like Chart.js
-
-3. Set up form submission functionality for the contact form
-
-4. Add Google Analytics or similar tracking
-
-5. Consider adding a blog or news section for ongoing updates about the company
