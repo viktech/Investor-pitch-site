@@ -3,22 +3,47 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BeeMonitor Pro | Advanced Pollinator Monitoring</title>
+  <title>BeeMonitor Pro | Smart Pollinator Monitoring System</title>
   <style>
-    /* Base Styles */
+    /* Core Variables */
     :root {
-      --primary: #F7B32B;
-      --secondary: #2B9720;
-      --tertiary: #8366E0;
-      --dark: #1A2A1D;
-      --light: #F5F7FA;
-      --gray: #6c757d;
-      --success: #28a745;
-      --info: #17a2b8;
-      --warning: #ffc107;
-      --danger: #dc3545;
+      --primary: #FFB81C;       /* Amber - Honey/Bee Color */
+      --secondary: #1C7C54;     /* Forest Green - Nature/Conservation */
+      --accent: #7E57C2;        /* Purple - Innovation/Research */
+      --dark: #222A30;          /* Dark Blue-Gray - Professional */
+      --light: #F7F9FB;         /* Off-White - Clean/Modern */
+      --success: #4CAF50;       /* Green - Positive Metrics */
+      --warning: #FF9800;       /* Orange - Attention */
+      --danger: #F44336;        /* Red - Alerts */
+      --gray-100: #F5F7FA;
+      --gray-200: #E4E7EB;
+      --gray-300: #CBD2D9;
+      --gray-400: #9AA5B1;
+      --gray-500: #7B8794;
+      --gray-600: #616E7C;
+      --gray-700: #52606D;
+      --gray-800: #3E4C59;
+      --gray-900: #323F4B;
+      
+      --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      --font-heading: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      --font-mono: 'JetBrains Mono', Menlo, Monaco, 'Courier New', monospace;
+      
+      --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+      --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+      --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+      
+      --border-radius-sm: 0.25rem;
+      --border-radius: 0.375rem;
+      --border-radius-md: 0.5rem;
+      --border-radius-lg: 0.75rem;
+      --border-radius-xl: 1rem;
+      --border-radius-2xl: 1.5rem;
+      --border-radius-full: 9999px;
     }
     
+    /* Base Reset */
     * {
       margin: 0;
       padding: 0;
@@ -26,229 +51,320 @@
     }
     
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      line-height: 1.6;
+      font-family: var(--font-primary);
       color: var(--dark);
+      line-height: 1.6;
       background-color: var(--light);
-    }
-    
-    a {
-      text-decoration: none;
-      color: var(--secondary);
-    }
-    
-    a:hover {
-      color: #1e7518;
-    }
-    
-    img {
-      max-width: 100%;
-      height: auto;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
     }
     
     /* Typography */
     h1, h2, h3, h4, h5, h6 {
+      font-family: var(--font-heading);
       font-weight: 700;
       line-height: 1.2;
       margin-bottom: 1rem;
     }
     
     h1 {
-      font-size: 2.5rem;
+      font-size: clamp(2.5rem, 5vw, 4rem);
     }
     
     h2 {
-      font-size: 2rem;
-      color: var(--secondary);
+      font-size: clamp(2rem, 4vw, 3rem);
     }
     
     h3 {
-      font-size: 1.75rem;
+      font-size: clamp(1.5rem, 3vw, 2rem);
     }
     
     h4 {
-      font-size: 1.5rem;
+      font-size: clamp(1.25rem, 2vw, 1.5rem);
     }
     
     p {
-      margin-bottom: 1rem;
+      margin-bottom: 1.5rem;
     }
     
-    /* Layout */
-    .container {
-      width: 100%;
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 1rem;
+    a {
+      color: var(--secondary);
+      text-decoration: none;
+      transition: color 0.2s ease-in-out;
     }
     
-    .row {
-      display: flex;
-      flex-wrap: wrap;
-      margin: 0 -1rem;
-    }
-    
-    .col {
-      flex: 1 0 0%;
-      padding: 0 1rem;
-    }
-    
-    /* For responsive columns */
-    .col-1 { flex: 0 0 8.333333%; max-width: 8.333333%; }
-    .col-2 { flex: 0 0 16.666667%; max-width: 16.666667%; }
-    .col-3 { flex: 0 0 25%; max-width: 25%; }
-    .col-4 { flex: 0 0 33.333333%; max-width: 33.333333%; }
-    .col-5 { flex: 0 0 41.666667%; max-width: 41.666667%; }
-    .col-6 { flex: 0 0 50%; max-width: 50%; }
-    .col-7 { flex: 0 0 58.333333%; max-width: 58.333333%; }
-    .col-8 { flex: 0 0 66.666667%; max-width: 66.666667%; }
-    .col-9 { flex: 0 0 75%; max-width: 75%; }
-    .col-10 { flex: 0 0 83.333333%; max-width: 83.333333%; }
-    .col-11 { flex: 0 0 91.666667%; max-width: 91.666667%; }
-    .col-12 { flex: 0 0 100%; max-width: 100%; }
-    
-    /* Utility Classes */
-    .text-center { text-align: center; }
-    .text-right { text-align: right; }
-    .text-left { text-align: left; }
-    
-    .mb-1 { margin-bottom: 0.25rem; }
-    .mb-2 { margin-bottom: 0.5rem; }
-    .mb-3 { margin-bottom: 1rem; }
-    .mb-4 { margin-bottom: 1.5rem; }
-    .mb-5 { margin-bottom: 3rem; }
-    
-    .mt-1 { margin-top: 0.25rem; }
-    .mt-2 { margin-top: 0.5rem; }
-    .mt-3 { margin-top: 1rem; }
-    .mt-4 { margin-top: 1.5rem; }
-    .mt-5 { margin-top: 3rem; }
-    
-    .py-1 { padding-top: 0.25rem; padding-bottom: 0.25rem; }
-    .py-2 { padding-top: 0.5rem; padding-bottom: 0.5rem; }
-    .py-3 { padding-top: 1rem; padding-bottom: 1rem; }
-    .py-4 { padding-top: 1.5rem; padding-bottom: 1.5rem; }
-    .py-5 { padding-top: 3rem; padding-bottom: 3rem; }
-    
-    .px-1 { padding-left: 0.25rem; padding-right: 0.25rem; }
-    .px-2 { padding-left: 0.5rem; padding-right: 0.5rem; }
-    .px-3 { padding-left: 1rem; padding-right: 1rem; }
-    .px-4 { padding-left: 1.5rem; padding-right: 1.5rem; }
-    .px-5 { padding-left: 3rem; padding-right: 3rem; }
-    
-    .btn {
-      display: inline-block;
-      font-weight: 400;
-      text-align: center;
-      vertical-align: middle;
-      cursor: pointer;
-      padding: 0.5rem 1rem;
-      font-size: 1rem;
-      line-height: 1.5;
-      border-radius: 0.25rem;
-      transition: all 0.2s ease-in-out;
-    }
-    
-    .btn-primary {
-      background-color: var(--primary);
-      border: 1px solid var(--primary);
-      color: white;
-    }
-    
-    .btn-primary:hover {
-      background-color: #e09d1c;
-      border-color: #e09d1c;
-    }
-    
-    .btn-secondary {
-      background-color: var(--secondary);
-      border: 1px solid var(--secondary);
-      color: white;
-    }
-    
-    .btn-secondary:hover {
-      background-color: #1e7518;
-      border-color: #1e7518;
-    }
-    
-    .btn-outline-primary {
-      background-color: transparent;
-      border: 1px solid var(--primary);
+    a:hover {
       color: var(--primary);
     }
     
-    .btn-outline-primary:hover {
-      background-color: var(--primary);
-      color: white;
+    /* Layout Elements */
+    .container {
+      width: 100%;
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
     }
     
-    .btn-lg {
-      padding: 0.75rem 1.5rem;
-      font-size: 1.25rem;
-      border-radius: 0.3rem;
+    .section {
+      padding: 5rem 0;
     }
     
-    .btn-sm {
-      padding: 0.25rem 0.5rem;
-      font-size: 0.875rem;
-      border-radius: 0.2rem;
+    .section-title {
+      text-align: center;
+      margin-bottom: 4rem;
     }
     
-    /* Card Component */
-    .card {
+    .section-title h2 {
       position: relative;
+      display: inline-block;
+      margin-bottom: 1rem;
+    }
+    
+    .section-title h2:after {
+      content: '';
+      display: block;
+      width: 80px;
+      height: 4px;
+      background: var(--primary);
+      margin: 0.5rem auto 0;
+    }
+    
+    .section-title p {
+      max-width: 800px;
+      margin: 0 auto;
+      font-size: 1.125rem;
+      color: var(--gray-600);
+    }
+    
+    .section-dark {
+      background-color: var(--dark);
+      color: var(--light);
+    }
+    
+    .section-dark .section-title h2:after {
+      background: var(--primary);
+    }
+    
+    .section-dark .section-title p {
+      color: var(--gray-300);
+    }
+    
+    .section-light {
+      background-color: var(--gray-100);
+    }
+    
+    .section-colored {
+      background-color: rgba(28, 124, 84, 0.05);
+    }
+    
+    /* Grid System */
+    .grid {
+      display: grid;
+      gap: 2rem;
+    }
+    
+    .grid-2 {
+      grid-template-columns: repeat(1, 1fr);
+    }
+    
+    .grid-3 {
+      grid-template-columns: repeat(1, 1fr);
+    }
+    
+    .grid-4 {
+      grid-template-columns: repeat(1, 1fr);
+    }
+    
+    @media (min-width: 768px) {
+      .grid-2 {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      
+      .grid-3 {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      
+      .grid-4 {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    
+    @media (min-width: 1024px) {
+      .grid-3 {
+        grid-template-columns: repeat(3, 1fr);
+      }
+      
+      .grid-4 {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+    
+    /* Flex Utilities */
+    .flex {
       display: flex;
+    }
+    
+    .flex-col {
       flex-direction: column;
-      min-width: 0;
-      word-wrap: break-word;
-      background-color: #fff;
-      background-clip: border-box;
-      border: 1px solid rgba(0, 0, 0, 0.125);
-      border-radius: 0.25rem;
-      box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
-      margin-bottom: 1.5rem;
-      transition: all 0.3s ease;
+    }
+    
+    .items-center {
+      align-items: center;
+    }
+    
+    .justify-between {
+      justify-content: space-between;
+    }
+    
+    .justify-center {
+      justify-content: center;
+    }
+    
+    .flex-wrap {
+      flex-wrap: wrap;
+    }
+    
+    .gap-4 {
+      gap: 1rem;
+    }
+    
+    .gap-8 {
+      gap: 2rem;
+    }
+    
+    /* Components */
+    .card {
+      background: white;
+      border-radius: var(--border-radius-lg);
+      padding: 2rem;
+      box-shadow: var(--shadow-md);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
     
     .card:hover {
       transform: translateY(-5px);
-      box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+      box-shadow: var(--shadow-lg);
     }
     
-    .card-header {
+    .card-title {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      color: var(--dark);
+    }
+    
+    .btn {
+      display: inline-block;
+      font-weight: 600;
+      text-align: center;
+      white-space: nowrap;
+      vertical-align: middle;
+      cursor: pointer;
+      user-select: none;
+      padding: 0.75rem 1.5rem;
+      border-radius: var(--border-radius);
+      transition: all 0.2s ease-in-out;
+      border: none;
+      font-size: 1rem;
+    }
+    
+    .btn-primary {
+      background-color: var(--primary);
+      color: var(--dark);
+    }
+    
+    .btn-primary:hover {
+      background-color: #E5A618;
+      color: var(--dark);
+    }
+    
+    .btn-secondary {
+      background-color: var(--secondary);
+      color: white;
+    }
+    
+    .btn-secondary:hover {
+      background-color: #166446;
+      color: white;
+    }
+    
+    .btn-outline {
+      background-color: transparent;
+      border: 2px solid var(--secondary);
+      color: var(--secondary);
+    }
+    
+    .btn-outline:hover {
+      background-color: var(--secondary);
+      color: white;
+    }
+    
+    .btn-lg {
+      padding: 1rem 2rem;
+      font-size: 1.125rem;
+    }
+    
+    .btn-rounded {
+      border-radius: var(--border-radius-full);
+    }
+    
+    /* Custom Styling for Testing */
+    .test-element {
+      background-color: var(--gray-200);
       padding: 1rem;
-      margin-bottom: 0;
-      background-color: rgba(0, 0, 0, 0.03);
-      border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+      border-radius: var(--border-radius);
+      margin-bottom: 1rem;
+      text-align: center;
     }
-    
-    .card-body {
-      flex: 1 1 auto;
-      padding: 1rem;
-    }
-    
-    .card-footer {
-      padding: 1rem;
-      background-color: rgba(0, 0, 0, 0.03);
-      border-top: 1px solid rgba(0, 0, 0, 0.125);
-    }
-    
-    .card-img-top {
-      width: 100%;
-      border-top-left-radius: calc(0.25rem - 1px);
-      border-top-right-radius: calc(0.25rem - 1px);
-    }
-    
-    /* Basic structure testing - will expand in next iterations */
   </style>
+  
+  <!-- Import fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono&family=Manrope:wght@500;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
-  <!-- Page content will go here in next iterations -->
-  <div style="padding: 2rem; text-align: center;">
-    <h1>BeeMonitor Pro</h1>
-    <p>Base HTML structure and styling tested successfully.</p>
-    <button class="btn btn-primary">Primary Button</button>
-    <button class="btn btn-secondary">Secondary Button</button>
+  <!-- Test basic styling -->
+  <div class="container section">
+    <div class="section-title">
+      <h2>Core Styling Test</h2>
+      <p>Testing the base styling components before building out the full site.</p>
+    </div>
+    
+    <div class="grid grid-2 gap-8">
+      <div>
+        <h3>Typography</h3>
+        <h1>Heading 1</h1>
+        <h2>Heading 2</h2>
+        <h3>Heading 3</h3>
+        <h4>Heading 4</h4>
+        <p>This is a paragraph with <a href="#">a link</a> inside it to test the styling.</p>
+      </div>
+      
+      <div>
+        <h3>Components</h3>
+        <div class="flex flex-col gap-4">
+          <button class="btn btn-primary">Primary Button</button>
+          <button class="btn btn-secondary">Secondary Button</button>
+          <button class="btn btn-outline">Outline Button</button>
+          <button class="btn btn-primary btn-rounded">Rounded Button</button>
+        </div>
+        
+        <div class="card" style="margin-top: 2rem;">
+          <h3 class="card-title">Card Example</h3>
+          <p>This is a card component that can be used throughout the site.</p>
+        </div>
+      </div>
+    </div>
+    
+    <div style="margin-top: 2rem;">
+      <h3>Grid System</h3>
+      <div class="grid grid-4 gap-4">
+        <div class="test-element">Column 1</div>
+        <div class="test-element">Column 2</div>
+        <div class="test-element">Column 3</div>
+        <div class="test-element">Column 4</div>
+      </div>
+    </div>
   </div>
 </body>
 </html>
